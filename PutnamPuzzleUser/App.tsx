@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import type { Node } from 'react';
 import {
   SafeAreaView,
@@ -35,9 +35,19 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import A1StartPage from './pages/A1StartPage';
 import A2SelectUsers from './pages/A2SelectUsers';
 
+import {initializeApp} from 'firebase/app';
+import {getDatabase, onValue, ref, set} from 'firebase/database';
+
+import {firebaseConfig} from './components/firebaseConfig';
+
 const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
+  const [currentAppState, setCurrentAppState] = useState('Inacvitve');
+  const [code, setCode] = useState('');
+  const [userCode, setUserCode] = useState('');
+  const [hintCooldown, setHintCooldown] = useState(0);
+  const [hintStatus, setHintStatus] = useState('Inactive');
 
   const backgroundStyle = {
     backgroundColor: "#FFD2D2",
@@ -46,11 +56,20 @@ const App: () => Node = () => {
     width: '100%',
     height: '100%',
     zIndex: 100,
-
-    //flex: 1,
-    // top: Platform.OS === "android" ? (StatusBar.currentHeight : 0,
-    //backgroundColor: Platform.OS === "android" ? 'red' : 'blue'
   };
+
+  useEffect(() => {
+    const db = getDatabase();
+    const dbRef = ref(db, 'app');
+    onValue(dbRef, snapshot => {
+      const data = snapshot.val();
+      setCurrentAppState(data.currentState);
+      setHintCooldown(data.hint.cooldown);
+      setCode(data.code.value);
+      setUserCode(data.code.userEntered);
+      setHintStatus(data.hint.status);
+    });
+  }, []);
 
   return (
 

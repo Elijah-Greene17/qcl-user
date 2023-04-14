@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import type { Node } from 'react';
 import {
   SafeAreaView,
@@ -21,6 +21,9 @@ import {
 
 import MainView from './components/MainView';
 import SafeViewAndroid from "./components/SafeViewAndroid";
+import {AppContext} from './Contexts/AppContext';
+import {initializeApp} from 'firebase/app';
+import {getDatabase, onValue, ref, set} from 'firebase/database';
 
 import {
   Colors,
@@ -35,9 +38,19 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import U1StartPage from './pages/U1StartPage';
 import U2WaitingRoomPage from './pages/U2WaitRoomPage';
 
+import {firebaseConfig} from './components/firebaseConfig';
+
+const app = initializeApp(firebaseConfig);
+
 const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
+  const [currentAppState, setCurrentAppState] = useState('Inacvitve');
+  const [code, setCode] = useState('');
+  const [userCode, setUserCode] = useState('');
+  const [hintName, setHintName] = useState('Error');
+  const [hintCooldown, setHintCooldown] = useState(0);
+  const [hintStatus, setHintStatus] = useState('Inactive');
 
   const backgroundStyle = {
     backgroundColor: "#D2D2FF",
@@ -45,17 +58,41 @@ const App: () => Node = () => {
     width: '100%',
     height: '100%',
     zIndex: 100,
-
-    //flex: 1,
-    // top: Platform.OS === "android" ? (StatusBar.currentHeight : 0,
-    //backgroundColor: Platform.OS === "android" ? 'red' : 'blue'
   };
 
-  return (
+  useEffect(() => {
+    const db = getDatabase();
+    const dbRef = ref(db, 'app');
+    onValue(dbRef, snapshot => {
+      const data = snapshot.val();
+      setCurrentAppState(data.currentState);
+      setHintCooldown(data.hint.cooldown);
+      setCode(data.code.value);
+      setUserCode(data.code.userEntered);
+      setHintStatus(data.hint.status);
+      setHintName(data.hint.by);
+    });
+  }, []);
 
+  return (
+    <AppContext.Provider
+      value={{
+        currentAppState,
+        setCurrentAppState,
+        code,
+        setCode,
+        userCode,
+        setUserCode,
+        hintName,
+        setHintName,
+        hintCooldown,
+        setHintCooldown,
+        hintStatus,
+        setHintStatus,
+      }}>
     <SafeAreaView style={Platform.OS == 'android' ? SafeViewAndroid.AndroidSafeArea : backgroundStyle}>
       <StatusBar barStyle={'dark-content'} backgroundColor="#D2D2FF" />
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Stack.Navigator screenOptions={{ animation: 'none' }}>
           <Stack.Screen
             name="U1"
@@ -68,9 +105,11 @@ const App: () => Node = () => {
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
-      </NavigationContainer>
-
+      </NavigationContainer> */}
+        {currentAppState == 'Inactive' && <U1StartPage />}
+        {currentAppState == 'Active In Progress' && <U2WaitingRoomPage />}
     </SafeAreaView>
+    </AppContext.Provider>
 
   );
 };
