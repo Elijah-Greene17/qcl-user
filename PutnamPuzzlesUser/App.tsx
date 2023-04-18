@@ -45,12 +45,17 @@ const app = initializeApp(firebaseConfig);
 const Stack = createNativeStackNavigator();
 
 const App: () => Node = () => {
+  const [userId, setUserId] = useState(-1);
+  const [userName, setUserName] = useState('');
+
+  const [users, setUsers] = useState([]);
   const [currentAppState, setCurrentAppState] = useState('Inacvitve');
   const [code, setCode] = useState('');
   const [userCode, setUserCode] = useState('');
   const [hintName, setHintName] = useState('Error');
   const [hintCooldown, setHintCooldown] = useState(0);
   const [hintStatus, setHintStatus] = useState('Inactive');
+  const [userIndex, setUserIndex] = useState(-1);
 
   const backgroundStyle = {
     backgroundColor: "#D2D2FF",
@@ -65,18 +70,34 @@ const App: () => Node = () => {
     const dbRef = ref(db, 'app');
     onValue(dbRef, snapshot => {
       const data = snapshot.val();
+      setUsers(data.users)
       setCurrentAppState(data.currentState);
       setHintCooldown(data.hint.cooldown);
       setCode(data.code.value);
       setUserCode(data.code.userEntered);
       setHintStatus(data.hint.status);
       setHintName(data.hint.by);
+      setUserIndex(data.userIndex);
     });
+
+    
   }, []);
+
+  useEffect(() => {
+    console.log("EG Test: ")
+    console.log(userId)
+    console.log(users)
+    
+    console.log(users.length > 0 && users.some(user => user.id === userId));
+  }, [users]);
 
   return (
     <AppContext.Provider
       value={{
+        userId,
+        setUserId,
+        userName,
+        setUserName,
         currentAppState,
         setCurrentAppState,
         code,
@@ -89,25 +110,16 @@ const App: () => Node = () => {
         setHintCooldown,
         hintStatus,
         setHintStatus,
+        userIndex,
+        setUserIndex,
       }}>
     <SafeAreaView style={Platform.OS == 'android' ? SafeViewAndroid.AndroidSafeArea : backgroundStyle}>
       <StatusBar barStyle={'dark-content'} backgroundColor="#D2D2FF" />
-      {/* <NavigationContainer>
-        <Stack.Navigator screenOptions={{ animation: 'none' }}>
-          <Stack.Screen
-            name="U1"
-            component={U1StartPage}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="U2"
-            component={U2WaitingRoomPage}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer> */}
-        {currentAppState == 'Inactive' && <U1StartPage />}
-        {currentAppState == 'Active In Progress' && <U2WaitingRoomPage />}
+      
+        {users.length > 0 && users.some(user => user.id === userId) ? <U2WaitingRoomPage /> : <U1StartPage />}
+
+        {/* {currentAppState == 'Inactive' && <U1StartPage />}
+        {currentAppState == 'Active In Progress' && <U2WaitingRoomPage />} */}
     </SafeAreaView>
     </AppContext.Provider>
 

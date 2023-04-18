@@ -1,4 +1,7 @@
 import {View, Text, Image, Pressable, TextInput} from 'react-native';
+import {useContext} from 'react';
+import {AppContext} from '../Contexts/AppContext';
+
 import Button from '../components/Button';
 
 import Timer from '../components/Timer';
@@ -6,6 +9,8 @@ import MainView from '../components/MainView';
 import Spacer from '../components/Spacer';
 import {useState, useEffect} from 'react';
 import Lobby from '../components/Lobby';
+
+import { firebaseConfig } from '../components/firebaseConfig';
 
 import {initializeApp} from 'firebase/app';
 import {getDatabase, onValue, ref, set, get, child} from 'firebase/database';
@@ -23,9 +28,17 @@ import {getDatabase, onValue, ref, set, get, child} from 'firebase/database';
 const U1StartPage = ({navigation}) => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [userInd, setUserInd] = useState(0);
+
+  const {
+    userId,
+    setUserId,
+    userName,
+    setUserName,
+    userIndex,
+  } = useContext(AppContext);
 
   useEffect(() => {
+    
     // const app = initializeApp(firebaseConfig)
     // const db = getDatabase()
     // const usersIndexRef = ref(db, 'app/userIndex/value')
@@ -45,16 +58,20 @@ const U1StartPage = ({navigation}) => {
   };
 
   const submitPlayerInfo = () => {
-    // const app = initializeApp(firebaseConfig)
-    // const db = getDatabase()
-    // set(ref(db, 'app/users/' + (userInd || 0)), {
-    //   Name: name,
-    //   Phone: phoneNumber,
-    // });
-    // set(ref(db, 'app/userIndex'), {
-    //   value: userInd + 1,
-    // });
-    // navigation.replace('U2');
+    
+    const app = initializeApp(firebaseConfig)
+    const db = getDatabase()
+
+    
+    setUserId(userIndex || 0);
+    setUserName(name);
+
+    set(ref(db, 'app/users/' + (userIndex || 0)), {
+      Name: name,
+      Phone: phoneNumber,
+      id: userIndex || 0,
+    });
+    set(ref(db, 'app/userIndex'), userIndex+1);
   };
 
   const backgroundStyle = {
@@ -91,7 +108,7 @@ const U1StartPage = ({navigation}) => {
   return (
     // Header: 25%; Timer: 15%, Form: 35%, Button: 20%
     <MainView style={backgroundStyle}>
-      <Spacer height={'20%'} />
+      <Spacer height={'10%'} />
       <View style={formStyle}>
         <Text style={labelStyle}>Name</Text>
         <View style={textInputViewStyle}>
@@ -111,6 +128,7 @@ const U1StartPage = ({navigation}) => {
           />
         </View>
       </View>
+      <Spacer height="10%" />
       <Button title={'Submit'} onClick={submitPlayerInfo} />
     </MainView>
   );
