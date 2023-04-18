@@ -40,6 +40,10 @@ import U2WaitingRoomPage from './pages/U2WaitRoomPage';
 
 import {firebaseConfig} from './components/firebaseConfig';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import U3QuestPage from './pages/U3QuestPage';
+import U4QuestInProgressPage from './pages/U4QuestInProgessPage';
+
 const app = initializeApp(firebaseConfig);
 
 const Stack = createNativeStackNavigator();
@@ -47,10 +51,12 @@ const Stack = createNativeStackNavigator();
 const App: () => Node = () => {
   const [userId, setUserId] = useState(-1);
   const [userName, setUserName] = useState('');
+  const [isUserIncluded, setIsUserIncluded] = useState(false);
 
   const [users, setUsers] = useState([]);
   const [currentAppState, setCurrentAppState] = useState('Inacvitve');
   const [code, setCode] = useState('');
+  const [timerEndTime, setTimerEndTime] = useState(0);
   const [userCode, setUserCode] = useState('');
   const [hintName, setHintName] = useState('Error');
   const [hintCooldown, setHintCooldown] = useState(0);
@@ -65,31 +71,79 @@ const App: () => Node = () => {
     zIndex: 100,
   };
 
+  const saveData = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, value);
+    } catch (error) {
+      // Handle error if needed
+      console.error(error);
+    }
+  };
+
+  const retrieveData = async (key) => {
+    try {
+      const value = await AsyncStorage.getItem(key);
+      return value
+    } catch (error) {
+      return null
+    }
+  };
+
+  const getUserId = async () => {
+    const localUserId = await retrieveData("localStoragePPUserId");
+    if (localUserId != null) {
+      setUserId(parseInt(localUserId));
+    }
+  }
+
+  useEffect(() => {
+    console.log(users)
+    console.log("App.tsx useEffect")
+    if (users){
+      console.log("myusers")
+      console.log(users.length)
+      users.forEach(user => {
+        if(user){
+          console.log("EG user ", user)
+          console.log("EG user.id ", user.id)
+          console.log("EG userId ", userId)
+          console.log(user == userId)
+          if (user == userId) {
+            setIsUserIncluded(true);
+          }
+        }
+      });
+    }
+  }, [users])
+
   useEffect(() => {
     const db = getDatabase();
     const dbRef = ref(db, 'app');
     onValue(dbRef, snapshot => {
       const data = snapshot.val();
-      setUsers(data.users)
+      let usersArray = [];
+      if (data.users) {
+        console.log(data.users);
+        for (let user in data.users) {
+          usersArray.push(user);
+        }
+        setUsers(usersArray);
+      }
       setCurrentAppState(data.currentState);
       setHintCooldown(data.hint.cooldown);
+      setTimerEndTime(data.timer.endTime);
       setCode(data.code.value);
       setUserCode(data.code.userEntered);
       setHintStatus(data.hint.status);
       setHintName(data.hint.by);
       setUserIndex(data.userIndex);
     });
-
     
   }, []);
 
   useEffect(() => {
-    console.log("EG Test: ")
-    console.log(userId)
-    console.log(users)
-    
-    console.log(users.length > 0 && users.some(user => user.id === userId));
-  }, [users]);
+    console.log("Current App State: ", currentAppState);
+  }, [currentAppState]);
 
   return (
     <AppContext.Provider
@@ -100,6 +154,8 @@ const App: () => Node = () => {
         setUserName,
         currentAppState,
         setCurrentAppState,
+        timerEndTime,
+        setTimerEndTime,
         code,
         setCode,
         userCode,
@@ -115,11 +171,10 @@ const App: () => Node = () => {
       }}>
     <SafeAreaView style={Platform.OS == 'android' ? SafeViewAndroid.AndroidSafeArea : backgroundStyle}>
       <StatusBar barStyle={'dark-content'} backgroundColor="#D2D2FF" />
-      
-        {users.length > 0 && users.some(user => user.id === userId) ? <U2WaitingRoomPage /> : <U1StartPage />}
+      {currentAppState == 'Inactive' && (userId >= 0 ? <U2WaitingRoomPage /> : <U1StartPage />)}
+      {currentAppState == 'Active In Progress' && (isUserIncluded ? <U3QuestPage /> : <U4QuestInProgressPage />)}
+      {/* {currentAppState == 'Active In Progress' && <U3QuestPage />} */}
 
-        {/* {currentAppState == 'Inactive' && <U1StartPage />}
-        {currentAppState == 'Active In Progress' && <U2WaitingRoomPage />} */}
     </SafeAreaView>
     </AppContext.Provider>
 

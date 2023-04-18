@@ -2,7 +2,7 @@ import {View, Text, Image, Pressable, TextInput} from 'react-native';
 import Timer from '../components/Timer';
 import MainView from '../components/MainView';
 
-const U2WaitingRoomPage = ({navigation}) => {
+const U4QuestInProgressPage = ({navigation}) => {
   const backgroundStyle = {
     backgroundColor: '#D2D2FF',
     height: '100%',
@@ -22,12 +22,11 @@ const U2WaitingRoomPage = ({navigation}) => {
 
   return (
     <MainView style={backgroundStyle}>
-      <Timer isRunning={false} startTime={0} />
       <View style={waitingViewStyle}>
-        <Text style={waitingViewTextStyle}>Waiting to start quest...</Text>
+        <Text style={waitingViewTextStyle}>Quest in Progress</Text>
       </View>
     </MainView>
   );
 };
 
-export default U2WaitingRoomPage;
+export default U4QuestInProgressPage;

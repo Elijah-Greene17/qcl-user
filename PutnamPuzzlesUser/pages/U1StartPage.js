@@ -10,44 +10,53 @@ import Spacer from '../components/Spacer';
 import {useState, useEffect} from 'react';
 import Lobby from '../components/Lobby';
 
-import { firebaseConfig } from '../components/firebaseConfig';
+import {firebaseConfig} from '../components/firebaseConfig';
 
 import {initializeApp} from 'firebase/app';
 import {getDatabase, onValue, ref, set, get, child} from 'firebase/database';
 
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyAYWnHYwXqH17hZbXIAT76bFgtN7gNyY7Q',
-//   authDomain: 'quietcornerquests.firebaseapp.com',
-//   projectId: 'quietcornerquests',
-//   storageBucket: 'quietcornerquests.appspot.com',
-//   messagingSenderId: '170321202795',
-//   appId: '1:170321202795:web:ee95b6d259360368fc6b2e',
-//   measurementId: 'G-0RJ6VZ0546',
-// };
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const retrieveData = async key => {
+  try {
+    const value = await AsyncStorage.getItem(key);
+    return value;
+  } catch (error) {
+    return null;
+  }
+};
+const saveData = async (key, value) => {
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (error) {
+    // Handle error if needed
+    console.error(error);
+  }
+};
 
 const U1StartPage = ({navigation}) => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
-  const {
-    userId,
-    setUserId,
-    userName,
-    setUserName,
-    userIndex,
-  } = useContext(AppContext);
+  const {userId, setUserId, userName, setUserName, userIndex} =
+    useContext(AppContext);
+
+  const onStartup = async () => {
+    const localName = await retrieveData('localStoragePPName');
+    const localPhone = await retrieveData('localStoragePPPhone');
+
+    if (localName) {
+      console.log('local name exists: ' + localName);
+      setName(localName);
+    }
+    if (localPhone) {
+      console.log('local phone exists: ' + localPhone);
+      setPhoneNumber(localPhone);
+    }
+  };
 
   useEffect(() => {
-    
-    // const app = initializeApp(firebaseConfig)
-    // const db = getDatabase()
-    // const usersIndexRef = ref(db, 'app/userIndex/value')
-    // // when a user is added or removed
-    // onValue(usersIndexRef, (snapshot) => {
-    //   const data = snapshot.val();
-    //   setUserInd(data)
-    //   console.log(data)
-    // })8
+    //onStartup();
   }, []);
 
   const handleNameChange = text => {
@@ -58,11 +67,9 @@ const U1StartPage = ({navigation}) => {
   };
 
   const submitPlayerInfo = () => {
-    
-    const app = initializeApp(firebaseConfig)
-    const db = getDatabase()
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
 
-    
     setUserId(userIndex || 0);
     setUserName(name);
 
@@ -71,7 +78,11 @@ const U1StartPage = ({navigation}) => {
       Phone: phoneNumber,
       id: userIndex || 0,
     });
-    set(ref(db, 'app/userIndex'), userIndex+1);
+    set(ref(db, 'app/userIndex'), userIndex + 1);
+
+    // saveData('localStoragePPName', name);
+    // saveData('localStoragePPPhone', phoneNumber);
+    // saveData('localStoragePPUserId', userIndex.toString() || 0);
   };
 
   const backgroundStyle = {
