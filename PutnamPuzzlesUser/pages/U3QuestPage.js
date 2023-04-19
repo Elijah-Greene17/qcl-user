@@ -11,12 +11,15 @@ import {initializeApp} from 'firebase/app';
 import {getDatabase, onValue, ref, set} from 'firebase/database';
 import {firebaseConfig} from '../components/firebaseConfig';
 
+import {send} from 'react-native-sms';
+
 const U3QuestPage = () => {
   const [time, setTime] = useState(0);
   const [completed, setCompleted] = useState(false);
   const [enteredCode, setEnteredCode] = useState('');
 
-  const {timerEndTime, code, userCode, setUserCode} = useContext(AppContext);
+  const {timerEndTime, code, userCode, setUserCode, userName, hintStatus} =
+    useContext(AppContext);
 
   const backgroundStyle = {
     backgroundColor: '#D2D2FF',
@@ -54,9 +57,20 @@ const U3QuestPage = () => {
     width: '60%',
     backgroundColor: '#fff',
   };
+  const hintStyle = {
+    fontSize: 18,
+    textAlign: 'center',
+    color: 'red',
+    fontWeight: 'bold',
+  };
 
   const handleHint = () => {
     console.log('handleHint');
+    // connect to db
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    set(ref(db, 'app/hint/by'), userName);
+    set(ref(db, 'app/hint/status'), 'Active');
   };
 
   const handleCodeSubmition = () => {
@@ -66,7 +80,7 @@ const U3QuestPage = () => {
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
-    set(ref(db, 'app/code/userEntered'), enteredCode);
+    set(ref(db, 'app/code/userEntered'), enteredCode.toUpperCase());
   };
 
   useEffect(() => {
@@ -94,24 +108,60 @@ const U3QuestPage = () => {
       console.log('Code Subitted: ', userCode);
       console.log('Acutal Code: ', code);
     }
+    if (userCode == code) {
+      setCompleted(true);
+    }
   }, [userCode]);
 
   return (
     <MainView style={backgroundStyle}>
       <Timer isRunning={true} startTime={time} />
       <Spacer height={'5%'} />
-      <Text style={labelStyle}>Enter Quest Completion Code</Text>
-      <View style={textInputViewStyle}>
-        <TextInput
-          style={textInputStyle}
-          onChangeText={text => setEnteredCode(text)}
-          value={enteredCode}
-        />
-      </View>
 
-      <Spacer height={'5%'} />
-      <Button title={'Submit Code'} onClick={handleCodeSubmition} />
-      <Button title={'Request Hint'} onClick={handleHint} />
+      {completed ? (
+        <View>
+          <Text style={waitingViewTextStyle}>
+            Congratulations! You have completed the quest! Your host will see
+            you in a moment
+          </Text>
+        </View>
+      ) : (
+        <>
+          {userCode.length > 0 && userCode != code && enteredCode.length > 0 ? (
+            <Text style={hintStyle}>
+              Sorry, the Completion Code is Incorrect
+            </Text>
+          ) : (
+            <Text style={labelStyle}>Enter Quest Completion Code</Text>
+          )}
+          <View style={textInputViewStyle}>
+            <TextInput
+              style={textInputStyle}
+              autoCapitalize={'characters'}
+              onChangeText={text => {
+                setEnteredCode(text);
+                if (text.length == 0) {
+                  const app = initializeApp(firebaseConfig);
+                  const db = getDatabase(app);
+                  set(ref(db, 'app/code/userEntered'), '');
+                }
+              }}
+              value={enteredCode}
+            />
+          </View>
+          <Spacer height={'5%'} />
+
+          <Button title={'Submit Code'} onClick={handleCodeSubmition} />
+          {hintStatus == 'Inactive' ? (
+            <Button title={'Request Hint'} onClick={handleHint} />
+          ) : (
+            <>
+              <Spacer height={'5%'} />
+              <Text style={hintStyle}>Hint Requested</Text>
+            </>
+          )}
+        </>
+      )}
     </MainView>
   );
 };
