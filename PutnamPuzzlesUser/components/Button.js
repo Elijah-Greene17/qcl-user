@@ -6,7 +6,7 @@ const Button = ({title, onClick}) => {
     flexDirection: 'row',
     justifyContent: 'center',
     height: '10%',
-    marginTop: '10%',
+    marginBottom: '10%',
   };
 
   const buttonBorder = {

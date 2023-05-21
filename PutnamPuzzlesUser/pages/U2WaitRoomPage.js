@@ -1,8 +1,9 @@
 import {View, Text, Image, Pressable, TextInput} from 'react-native';
 import Timer from '../components/Timer';
 import MainView from '../components/MainView';
+import Spacer from '../components/Spacer';
 
-const U2WaitingRoomPage = ({navigation}) => {
+const U2WaitingRoomPage = ({selected}) => {
   const backgroundStyle = {
     backgroundColor: '#D2D2FF',
     height: '100%',
@@ -22,9 +23,15 @@ const U2WaitingRoomPage = ({navigation}) => {
 
   return (
     <MainView style={backgroundStyle}>
-      <Timer isRunning={false} startTime={0} />
+      <Spacer height={'10%'} />
       <View style={waitingViewStyle}>
-        <Text style={waitingViewTextStyle}>Waiting to start quest...</Text>
+        {selected ? (
+          <Text style={waitingViewTextStyle}>
+            Entry Accepted, waiting start of quest...
+          </Text>
+        ) : (
+          <Text style={waitingViewTextStyle}>Awaiting Entry to Quest...</Text>
+        )}
       </View>
     </MainView>
   );

@@ -34,6 +34,7 @@ import {
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import U0HomePage from './pages/U0HomePage';
 import U1StartPage from './pages/U1StartPage';
 import U2WaitingRoomPage from './pages/U2WaitRoomPage';
 
@@ -63,6 +64,8 @@ const App = () => {
   const [hintCooldown, setHintCooldown] = useState(0);
   const [hintStatus, setHintStatus] = useState('Inactive');
   const [userIndex, setUserIndex] = useState(-1);
+
+  const [userIsSelected, setUserIsSelected] = useState(false);
 
   const backgroundStyle = {
     backgroundColor: '#D2D2FF',
@@ -106,12 +109,11 @@ const App = () => {
       console.log(users.length);
       users.forEach(user => {
         if (user) {
-          console.log('EG user ', user);
-          console.log('EG user.id ', user.id);
-          console.log('EG userId ', userId);
-          console.log(user == userId);
-          if (user == userId) {
+          console.log(user.id == userId);
+          if (user.id == userId) {
             setIsUserIncluded(true);
+            console.log('Changing userIsSelected to: ', user);
+            setUserIsSelected(user.selected);
           }
         }
       });
@@ -125,10 +127,9 @@ const App = () => {
       const data = snapshot.val();
       let usersArray = [];
       if (data.users) {
-        console.log(data.users);
-        for (let user in data.users) {
+        data.users.forEach(user => {
           usersArray.push(user);
-        }
+        });
         setUsers(usersArray);
       } else {
         setUsers([]);
@@ -179,8 +180,13 @@ const App = () => {
             : backgroundStyle
         }>
         <StatusBar barStyle={'dark-content'} backgroundColor="#D2D2FF" />
-        {currentAppState != 'Active In Progress' &&
-          (userId >= 0 ? <U2WaitingRoomPage /> : <U1StartPage />)}
+        {currentAppState == 'Inactive' &&
+          (userId >= 0 ? (
+            <U2WaitingRoomPage selected={userIsSelected} />
+          ) : (
+            <U1StartPage />
+          ))}
+        {currentAppState == 'Uninitiated' && <U0HomePage />}
         {currentAppState == 'Active In Progress' &&
           (isUserIncluded ? <U3QuestPage /> : <U4QuestInProgressPage />)}
         {/* {currentAppState == 'Active In Progress' && <U3QuestPage />} */}

@@ -1,5 +1,5 @@
 import {View, Text, Image, Pressable, TextInput} from 'react-native';
-import {useContext} from 'react';
+import {useContext, useRef} from 'react';
 import {AppContext} from '../Contexts/AppContext';
 
 import Button from '../components/Button';
@@ -37,6 +37,9 @@ const saveData = async (key, value) => {
 const U1StartPage = ({navigation}) => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [number, setNumber] = useState('');
+
+  const numRef = useRef();
 
   const {userId, setUserId, userName, setUserName, userIndex} =
     useContext(AppContext);
@@ -56,14 +59,84 @@ const U1StartPage = ({navigation}) => {
   };
 
   useEffect(() => {
-    //onStartup();
-  }, []);
+    //Format Phone Number
+    let phoneText = '';
+    console.log(number);
+    switch (number.length) {
+      case 1:
+        // code block to be executed if expression === value1
+        phoneText = '(' + number + ')';
+        break;
+      case 2:
+        // code block to be executed if expression === value2
+        phoneText = '(' + number + ')';
+        break;
+      // you can have any number of case statements
+      case 3:
+        phoneText = '(' + number + ')';
+        break;
+      case 4:
+        phoneText =
+          '(' + number.substring(0, 3) + ') ' + number.substring(3, 4);
+        break;
+      case 5:
+        phoneText =
+          '(' + number.substring(0, 3) + ') ' + number.substring(3, 5);
+        break;
+      case 6:
+        phoneText =
+          '(' + number.substring(0, 3) + ') ' + number.substring(3, 6);
+        break;
+      case 7:
+        phoneText =
+          '(' +
+          number.substring(0, 3) +
+          ') ' +
+          number.substring(3, 6) +
+          '-' +
+          number.substring(6, 7);
+        break;
+      case 8:
+        phoneText =
+          '(' +
+          number.substring(0, 3) +
+          ') ' +
+          number.substring(3, 6) +
+          '-' +
+          number.substring(6, 8);
+        break;
+      case 9:
+        phoneText =
+          '(' +
+          number.substring(0, 3) +
+          ') ' +
+          number.substring(3, 6) +
+          '-' +
+          number.substring(6, 9);
+        break;
+      case 10:
+        phoneText =
+          '(' +
+          number.substring(0, 3) +
+          ') ' +
+          number.substring(3, 6) +
+          '-' +
+          number.substring(6, 10);
+        break;
+
+      default:
+        // code block to be executed if expression doesn't match any case
+        phoneText = '';
+    }
+
+    setPhoneNumber(phoneText);
+  }, [number]);
 
   const handleNameChange = text => {
     setName(text);
   };
-  const handlePhoneNumberChange = text => {
-    setPhoneNumber(text);
+  const handlePhoneNumberChange = num => {
+    setPhoneNumber(num);
   };
 
   const submitPlayerInfo = () => {
@@ -77,6 +150,7 @@ const U1StartPage = ({navigation}) => {
       Name: name,
       Phone: phoneNumber,
       id: userIndex || 0,
+      selected: false,
     });
     set(ref(db, 'app/userIndex'), userIndex + 1);
 
@@ -115,11 +189,13 @@ const U1StartPage = ({navigation}) => {
     width: '60%',
     backgroundColor: '#fff',
   };
+  const hiddenTextInput = {
+    display: 'none',
+  };
 
   return (
     // Header: 25%; Timer: 15%, Form: 35%, Button: 20%
     <MainView style={backgroundStyle}>
-      <Spacer height={'10%'} />
       <View style={formStyle}>
         <Text style={labelStyle}>Name</Text>
         <View style={textInputViewStyle}>
@@ -134,13 +210,28 @@ const U1StartPage = ({navigation}) => {
         <View style={textInputViewStyle}>
           <TextInput
             style={textInputStyle}
-            onChangeText={handlePhoneNumberChange}
+            keyboardType="number-pad"
+            onFocus={() => {
+              numRef.current.focus();
+            }}
+            // onChangeText={handlePhoneNumberChange}
             value={phoneNumber}
+          />
+          <TextInput
+            style={hiddenTextInput}
+            keyboardType="number-pad"
+            onChangeText={text => {
+              setNumber(text);
+            }}
+            ref={numRef}
+            maxLength={10}
+            value={number}
           />
         </View>
       </View>
-      <Spacer height="10%" />
+
       <Button title={'Submit'} onClick={submitPlayerInfo} />
+      <Spacer height="20%" />
     </MainView>
   );
 };

@@ -9,31 +9,6 @@ import {getDatabase, onValue, ref, set} from 'firebase/database';
 const Timer = ({isRunning, startTime}) => {
   const [time, setTime] = useState(startTime);
 
-  // useEffect(() => {
-  //   setTime(startTime)
-  //   let interval;
-  //   if (isRunning && time > 0) {
-  //     interval = setInterval(() => {
-  //       if (time - 1000 >= 0){
-  //         setTime(prevTime => prevTime - 1000);
-  //       }
-  //     }, 1000);
-  //   } else {
-  //     clearInterval(interval);
-  //   }
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [isRunning]);
-
-  // useEffect(() => {
-  //   console.log("Time: ", time)
-  //   if (time <= 0) {
-  //     console.log('Time is up!');
-  //   }
-  // }, [time, startTime]);
-
   const hourDisplay = Math.floor(startTime / 3600000);
   const minuteDisplay = Math.floor((startTime % 3600000) / 60000);
   const secondDisplay = Math.floor((startTime % 60000) / 1000);

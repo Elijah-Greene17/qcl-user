@@ -1,0 +1,155 @@
+
+App Thinning Size Report for All Variants of PutnamPuzzlesUser
+
+Variant: PutnamPuzzlesUser-02607096-132A-4391-AA4F-8A72B22E9EE1.ipa
+Supported variant descriptors: [device: iPod9,1, os-version: 14.0], [device: iPhone8,4, os-version: 14.0], [device: iPhone8,1, os-version: 14.0], [device: iPhone8,1, os-version: 13.0], [device: iPhone8,4, os-version: 13.0], and [device: iPod9,1, os-version: 13.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.1 MB uncompressed
+App size: 3.3 MB compressed, 8.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-071E83A2-5CF6-405D-B261-B192E2A52F00.ipa
+Supported variant descriptors: [device: iPhone10,1, os-version: 16.0], [device: iPhone12,8, os-version: 15.0], [device: iPhone10,4, os-version: 16.0], [device: iPhone14,6, os-version: 16.0], [device: iPhone12,8, os-version: 16.0], [device: iPhone9,1, os-version: 15.0], [device: iPhone9,3, os-version: 15.0], [device: iPhone10,4, os-version: 15.0], [device: iPhone14,6, os-version: 15.0], and [device: iPhone10,1, os-version: 15.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.1 MB uncompressed
+App size: 3.3 MB compressed, 8.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-1B80975B-037C-4388-A172-5FCFCC3B3EAD.ipa
+Supported variant descriptors: [device: iPad6,4, os-version: 13.0], [device: iPad7,2, os-version: 14.0], [device: iPad8,12, os-version: 14.0], [device: iPad8,7, os-version: 14.0], [device: iPad8,6, os-version: 14.0], [device: iPad11,3, os-version: 13.0], [device: iPad7,3, os-version: 14.0], [device: iPad8,1, os-version: 14.0], [device: iPad13,5, os-version: 14.0], [device: iPad8,5, os-version: 14.0], [device: iPad7,3, os-version: 13.0], [device: iPad7,2, os-version: 13.0], [device: iPad11,3, os-version: 14.0], [device: iPad8,2, os-version: 13.0], [device: iPad11,4, os-version: 14.0], [device: iPad7,1, os-version: 13.0], [device: iPad13,10, os-version: 14.0], [device: iPad8,4, os-version: 13.0], [device: iPad13,9, os-version: 14.0], [device: iPad13,8, os-version: 14.0], [device: iPad8,8, os-version: 14.0], [device: iPad6,3, os-version: 14.0], [device: iPad8,1, os-version: 13.0], [device: iPad8,6, os-version: 13.0], [device: iPad11,1, os-version: 14.0], [device: iPad8,9, os-version: 13.0], [device: iPad8,11, os-version: 14.0], [device: iPad8,3, os-version: 13.0], [device: iPad8,10, os-version: 14.0], [device: iPad8,2, os-version: 14.0], [device: iPad8,12, os-version: 13.0], [device: iPad8,4, os-version: 14.0], [device: iPad13,11, os-version: 14.0], [device: iPad8,5, os-version: 13.0], [device: iPad13,1, os-version: 14.0], [device: iPad7,4, os-version: 13.0], [device: iPad13,2, os-version: 14.0], [device: iPad8,9, os-version: 14.0], [device: iPad8,11, os-version: 13.0], [device: iPad13,4, os-version: 14.0], [device: iPad8,3, os-version: 14.0], [device: iPad6,4, os-version: 14.0], [device: iPad11,4, os-version: 13.0], [device: iPad8,8, os-version: 13.0], [device: iPad8,10, os-version: 13.0], [device: iPad7,4, os-version: 14.0], [device: iPad11,1, os-version: 13.0], [device: iPad13,6, os-version: 14.0], [device: iPad11,2, os-version: 13.0], [device: iPad8,7, os-version: 13.0], [device: MacFamily20,1, os-version: 14.0], [device: iPad6,3, os-version: 13.0], [device: iPad13,7, os-version: 14.0], [device: iPad7,1, os-version: 14.0], and [device: iPad11,2, os-version: 14.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.2 MB uncompressed
+App size: 3.3 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-1E4F4D97-037B-4F91-A758-10140B522E89.ipa
+Supported variant descriptors: [device: iPad6,7, os-version: 14.0], [device: iPad7,5, os-version: 14.0], [device: iPad11,7, os-version: 14.0], [device: iPad5,3, os-version: 13.0], [device: iPad6,11, os-version: 14.0], [device: iPad7,6, os-version: 13.0], [device: iPad7,12, os-version: 13.0], [device: iPad7,5, os-version: 13.0], [device: iPad7,12, os-version: 14.0], [device: iPad5,4, os-version: 14.0], [device: iPad6,8, os-version: 13.0], [device: iPad7,6, os-version: 14.0], [device: iPad7,11, os-version: 14.0], [device: iPad11,6, os-version: 14.0], [device: iPad5,2, os-version: 13.0], [device: iPad6,11, os-version: 13.0], [device: iPad6,12, os-version: 14.0], [device: iPad6,7, os-version: 13.0], [device: iPad5,4, os-version: 13.0], [device: iPad6,12, os-version: 13.0], [device: iPad5,2, os-version: 14.0], [device: iPad5,1, os-version: 14.0], [device: iPad7,11, os-version: 13.0], [device: iPad5,1, os-version: 13.0], [device: iPad6,8, os-version: 14.0], and [device: iPad5,3, os-version: 14.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.2 MB uncompressed
+App size: 3.3 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-2029C42D-3834-4B15-AB8C-36DC2252F24C.ipa
+Supported variant descriptors: [device: iPhone10,4, os-version: 12.2], [device: iPhone9,3, os-version: 12.2], [device: iPhone9,1, os-version: 12.2], and [device: iPhone10,1, os-version: 12.2]
+App + On Demand Resources size: 3.3 MB compressed, 8.1 MB uncompressed
+App size: 3.3 MB compressed, 8.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-22095D46-1518-41FA-901C-FF1977573007.ipa
+Supported variant descriptors: [device: iPhone12,3, os-version: 15.0], [device: iPhone10,5, os-version: 16.0], [device: iPhone14,3, os-version: 15.0], [device: iPhone12,5, os-version: 15.0], [device: iPhone13,3, os-version: 15.0], [device: iPhone10,5, os-version: 15.0], [device: iPhone13,1, os-version: 16.0], [device: iPhone11,6, os-version: 16.0], [device: iPhone9,4, os-version: 15.0], [device: iPhone11,2, os-version: 16.0], [device: iPhone13,1, os-version: 15.0], [device: iPhone9,2, os-version: 15.0], [device: iPhone14,5, os-version: 16.0], [device: iPhone14,2, os-version: 15.0], [device: iPhone14,2, os-version: 16.0], [device: iPhone11,4, os-version: 16.0], [device: iPhone14,8, os-version: 16.0], [device: iPhone10,2, os-version: 16.0], [device: iPhone13,3, os-version: 16.0], [device: iPhone11,6, os-version: 15.0], [device: iPhone13,4, os-version: 15.0], [device: iPhone14,7, os-version: 16.0], [device: iPhone10,3, os-version: 15.0], [device: iPhone14,3, os-version: 16.0], [device: iPhone13,2, os-version: 15.0], [device: iPhone11,2, os-version: 15.0], [device: iPhone10,2, os-version: 15.0], [device: iPhone12,3, os-version: 16.0], [device: iPhone15,3, os-version: 16.0], [device: iPhone14,4, os-version: 15.0], [device: iPhone14,4, os-version: 16.0], [device: iPhone10,3, os-version: 16.0], [device: iPhone15,2, os-version: 16.0], [device: iPhone10,6, os-version: 15.0], [device: iPhone13,4, os-version: 16.0], [device: iPhone14,5, os-version: 15.0], [device: iPhone13,2, os-version: 16.0], [device: iPhone11,4, os-version: 15.0], [device: iPhone12,5, os-version: 16.0], and [device: iPhone10,6, os-version: 16.0]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-2F01A10A-9D07-4692-B453-033E2CF8E4FF.ipa
+Supported variant descriptors: [device: iPad8,1, os-version: 12.2], [device: iPad7,1, os-version: 12.2], [device: iPad7,2, os-version: 12.2], [device: iPad6,3, os-version: 12.2], [device: iPad8,2, os-version: 12.2], [device: iPad7,3, os-version: 12.2], [device: iPad7,4, os-version: 12.2], [device: iPad8,7, os-version: 12.2], [device: iPad11,2, os-version: 12.2], [device: iPad11,1, os-version: 12.2], [device: iPad8,5, os-version: 12.2], [device: iPad8,6, os-version: 12.2], [device: iPad8,4, os-version: 12.2], [device: iPad8,3, os-version: 12.2], [device: iPad11,3, os-version: 12.2], [device: iPad6,4, os-version: 12.2], [device: iPad11,4, os-version: 12.2], and [device: iPad8,8, os-version: 12.2]
+App + On Demand Resources size: 3.3 MB compressed, 8.2 MB uncompressed
+App size: 3.3 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-4A6C53C6-2939-418C-A7FD-192085DF2E81.ipa
+Supported variant descriptors: [device: iPhone11,4, os-version: 12.2], [device: iPhone9,2, os-version: 12.2], [device: iPhone10,2, os-version: 12.2], [device: iPhone10,5, os-version: 12.2], [device: iPhone11,2, os-version: 12.2], [device: iPhone11,6, os-version: 12.2], [device: iPhone10,3, os-version: 12.2], [device: iPhone10,6, os-version: 12.2], and [device: iPhone9,4, os-version: 12.2]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-63CEB806-ED3D-461F-8F8A-42F3BDE33651.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 16.0], [device: iPhone11,8, os-version: 15.0], [device: iPhone12,1, os-version: 15.0], and [device: iPhone12,1, os-version: 16.0]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-6744F87E-D802-48BB-911E-AE3F7B0080C0.ipa
+Supported variant descriptors: [device: iPad4,6, os-version: 12.2], [device: iPad4,3, os-version: 12.2], [device: iPad4,7, os-version: 12.2], [device: iPad4,4, os-version: 12.2], [device: iPad4,2, os-version: 12.2], [device: iPad6,11, os-version: 12.2], [device: iPad6,12, os-version: 12.2], [device: iPad4,1, os-version: 12.2], [device: iPad4,8, os-version: 12.2], [device: iPad5,1, os-version: 12.2], [device: iPad7,6, os-version: 12.2], [device: iPad4,5, os-version: 12.2], [device: iPad4,9, os-version: 12.2], [device: iPad5,4, os-version: 12.2], [device: iPad6,7, os-version: 12.2], [device: iPad5,3, os-version: 12.2], [device: iPad5,2, os-version: 12.2], [device: iPad6,8, os-version: 12.2], and [device: iPad7,5, os-version: 12.2]
+App + On Demand Resources size: 3.3 MB compressed, 8.2 MB uncompressed
+App size: 3.3 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-72E8BF84-2227-4289-9BF2-E6E1C7EF3621.ipa
+Supported variant descriptors: [device: iPad6,8, os-version: 16.0], [device: iPad6,12, os-version: 15.0], [device: iPad7,5, os-version: 16.0], [device: iPad6,8, os-version: 15.0], [device: iPad6,12, os-version: 16.0], [device: iPad5,4, os-version: 15.0], [device: iPad11,6, os-version: 15.0], [device: iPad7,12, os-version: 15.0], [device: iPad5,2, os-version: 15.0], [device: iPad13,19, os-version: 16.0], [device: iPad11,7, os-version: 15.0], [device: iPad12,2, os-version: 15.0], [device: iPad11,7, os-version: 16.0], [device: iPad6,7, os-version: 16.0], [device: iPad6,7, os-version: 15.0], [device: iPad5,3, os-version: 15.0], [device: iPad7,5, os-version: 15.0], [device: iPad7,12, os-version: 16.0], [device: iPad13,18, os-version: 16.0], [device: iPad6,11, os-version: 16.0], [device: iPad5,1, os-version: 15.0], [device: iPad12,1, os-version: 16.0], [device: iPad7,6, os-version: 16.0], [device: iPad7,11, os-version: 15.0], [device: iPad7,11, os-version: 16.0], [device: iPad12,2, os-version: 16.0], [device: iPad11,6, os-version: 16.0], [device: iPad7,6, os-version: 15.0], [device: iPad6,11, os-version: 15.0], and [device: iPad12,1, os-version: 15.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.2 MB uncompressed
+App size: 3.3 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-73753924-8054-4D9B-8EE2-292479639435.ipa
+Supported variant descriptors: [device: iPhone8,1, os-version: 15.0], [device: iPod9,1, os-version: 15.0], and [device: iPhone8,4, os-version: 15.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.1 MB uncompressed
+App size: 3.3 MB compressed, 8.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-82AE8D12-79D6-4CCE-884C-E20C30C05B57.ipa
+Supported variant descriptors: [device: iPhone7,2, os-version: 12.2], [device: iPhone6,2, os-version: 12.2], [device: iPhone6,1, os-version: 12.2], [device: iPod7,1, os-version: 12.2], [device: iPod9,1, os-version: 12.2], [device: iPhone8,1, os-version: 12.2], and [device: iPhone8,4, os-version: 12.2]
+App + On Demand Resources size: 3.3 MB compressed, 8.2 MB uncompressed
+App size: 3.3 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-8DD04FE9-2663-4F18-873C-F845E332CECD.ipa
+Supported variant descriptors: [device: iPhone9,1, os-version: 13.0], [device: iPhone10,1, os-version: 14.0], [device: iPhone12,8, os-version: 14.0], [device: iPhone10,1, os-version: 13.0], [device: iPhone10,4, os-version: 13.0], [device: iPhone12,8, os-version: 13.0], [device: iPhone9,3, os-version: 13.0], [device: iPhone9,1, os-version: 14.0], [device: iPhone9,3, os-version: 14.0], and [device: iPhone10,4, os-version: 14.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.1 MB uncompressed
+App size: 3.3 MB compressed, 8.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-A737F800-C8E4-4585-A40F-D3516DC817C0.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 12.2]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-AB429196-47F9-48A9-B239-A4282CD3B3E1.ipa
+Supported variant descriptors: [device: iPhone12,1, os-version: 13.0], [device: iPhone12,1, os-version: 14.0], [device: iPhone11,8, os-version: 14.0], and [device: iPhone11,8, os-version: 13.0]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-B4A67C5B-E57B-4F9A-B948-8C486E5557E5.ipa
+Supported variant descriptors: [device: iPhone7,1, os-version: 12.2] and [device: iPhone8,2, os-version: 12.2]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-BC43C333-9DC9-49C2-A6F3-F16AFEB6F750.ipa
+Supported variant descriptors: [device: iPhone10,3, os-version: 14.0], [device: iPhone9,4, os-version: 14.0], [device: iPhone13,1, os-version: 14.0], [device: iPhone11,6, os-version: 13.0], [device: iPhone11,2, os-version: 13.0], [device: iPhone10,6, os-version: 14.0], [device: iPhone10,6, os-version: 13.0], [device: iPhone10,2, os-version: 14.0], [device: iPhone10,5, os-version: 14.0], [device: iPhone12,3, os-version: 13.0], [device: iPhone13,3, os-version: 14.0], [device: iPhone13,4, os-version: 14.0], [device: iPhone12,3, os-version: 14.0], [device: iPhone9,4, os-version: 13.0], [device: iPhone10,5, os-version: 13.0], [device: iPhone11,6, os-version: 14.0], [device: iPhone11,2, os-version: 14.0], [device: iPhone12,5, os-version: 13.0], [device: iPhone10,3, os-version: 13.0], [device: iPhone12,5, os-version: 14.0], [device: iPhone11,4, os-version: 14.0], [device: iPhone13,2, os-version: 14.0], [device: iPhone9,2, os-version: 13.0], [device: iPhone11,4, os-version: 13.0], [device: iPhone9,2, os-version: 14.0], and [device: iPhone10,2, os-version: 13.0]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-BDE74C79-1FC5-4717-A666-62FA5018743B.ipa
+Supported variant descriptors: [device: iPhone8,2, os-version: 13.0] and [device: iPhone8,2, os-version: 14.0]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-E2592BDC-61F0-4929-995E-64B8ECBB25B7.ipa
+Supported variant descriptors: [device: iPhone8,2, os-version: 15.0]
+App + On Demand Resources size: 3.4 MB compressed, 8.2 MB uncompressed
+App size: 3.4 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser-F41CDC69-193C-46A8-89BB-9DE37B5390FC.ipa
+Supported variant descriptors: [device: iPad14,1, os-version: 16.0], [device: iPad13,6, os-version: 16.0], [device: iPad13,1, os-version: 16.0], [device: iPad8,2, os-version: 16.0], [device: iPad13,5, os-version: 16.0], [device: iPad13,11, os-version: 16.0], [device: iPad13,16, os-version: 15.0], [device: iPad8,6, os-version: 15.0], [device: iPad8,1, os-version: 16.0], [device: MacFamily20,1, os-version: 15.0], [device: iPad8,3, os-version: 15.0], [device: iPad8,2, os-version: 15.0], [device: iPad14,4-A, os-version: 16.0], [device: iPad7,1, os-version: 15.0], [device: iPad13,10, os-version: 15.0], [device: iPad7,3, os-version: 16.0], [device: iPad11,2, os-version: 15.0], [device: iPad14,3-A, os-version: 16.0], [device: iPad8,11, os-version: 16.0], [device: iPad13,9, os-version: 16.0], [device: iPad8,10, os-version: 16.0], [device: iPad13,2, os-version: 15.0], [device: iPad6,4, os-version: 16.0], [device: iPad7,2, os-version: 15.0], [device: iPad8,8, os-version: 16.0], [device: iPad14,3-B, os-version: 16.0], [device: iPad8,9, os-version: 15.0], [device: iPad8,5, os-version: 15.0], [device: iPad13,6, os-version: 15.0], [device: iPad7,4, os-version: 15.0], [device: iPad6,3, os-version: 16.0], [device: iPad13,4, os-version: 15.0], [device: iPad11,4, os-version: 16.0], [device: iPad8,5, os-version: 16.0], [device: iPad8,12, os-version: 16.0], [device: iPad13,8, os-version: 16.0], [device: iPad11,3, os-version: 15.0], [device: iPad8,4, os-version: 15.0], [device: iPad14,4-B, os-version: 16.0], [device: iPad6,3, os-version: 15.0], [device: iPad11,3, os-version: 16.0], [device: iPad13,4, os-version: 16.0], [device: iPad8,7, os-version: 16.0], [device: iPad7,1, os-version: 16.0], [device: iPad11,2, os-version: 16.0], [device: iPad13,5, os-version: 15.0], [device: iPad6,4, os-version: 15.0], [device: iPad7,2, os-version: 16.0], [device: iPad8,10, os-version: 15.0], [device: iPad8,11, os-version: 15.0], [device: iPad8,3, os-version: 16.0], [device: iPad13,9, os-version: 15.0], [device: MacFamily20,1, os-version: 16.0], [device: iPad13,17, os-version: 16.0], [device: iPad14,5-A, os-version: 16.0], [device: iPad11,1, os-version: 15.0], [device: iPad14,6-B, os-version: 16.0], [device: iPad11,4, os-version: 15.0], [device: iPad14,2, os-version: 15.0], [device: iPad8,1, os-version: 15.0], [device: iPad14,1, os-version: 15.0], [device: iPad7,3, os-version: 15.0], [device: iPad8,8, os-version: 15.0], [device: iPad13,8, os-version: 15.0], [device: iPad14,6-A, os-version: 16.0], [device: iPad13,7, os-version: 15.0], [device: iPad14,2, os-version: 16.0], [device: iPad11,1, os-version: 16.0], [device: iPad13,2, os-version: 16.0], [device: iPad8,4, os-version: 16.0], [device: iPad8,7, os-version: 15.0], [device: iPad8,6, os-version: 16.0], [device: iPad13,10, os-version: 16.0], [device: iPad7,4, os-version: 16.0], [device: iPad13,1, os-version: 15.0], [device: iPad13,7, os-version: 16.0], [device: iPad13,17, os-version: 15.0], [device: iPad8,9, os-version: 16.0], [device: iPad14,5-B, os-version: 16.0], [device: iPad13,16, os-version: 16.0], [device: iPad8,12, os-version: 15.0], and [device: iPad13,11, os-version: 15.0]
+App + On Demand Resources size: 3.3 MB compressed, 8.2 MB uncompressed
+App size: 3.3 MB compressed, 8.2 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: PutnamPuzzlesUser.ipa
+Supported variant descriptors: Universal
+App + On Demand Resources size: 4 MB compressed, 8.8 MB uncompressed
+App size: 4 MB compressed, 8.8 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
