@@ -21,6 +21,7 @@ const U3QuestPage = () => {
   const [enteredCode, setEnteredCode] = useState('');
   const [confirm, setConfirm] = useState(false);
   const [showErrorCode, setShowErrorCode] = useState(false);
+  const [completionIsFocused, setCompletionIsFocused] = useState(false);
 
   const {
     timerEndTime,
@@ -145,7 +146,8 @@ const U3QuestPage = () => {
     // count down timer
     const timer = setInterval(() => {
       console.log(timeRemaining);
-      if (timeRemaining > 0) {
+      if (timeRemaining > 0 && !completed) {
+        console.log('Completed: ', completed);
         timeRemaining = timerEndTime - Date.now();
         setTime(timeRemaining);
       } else {
@@ -153,7 +155,7 @@ const U3QuestPage = () => {
       }
     }, 1000);
     return () => clearInterval(timer);
-  }, [timerEndTime]);
+  }, [timerEndTime, completed]);
 
   useEffect(() => {
     if (enteredCode.length > 0) {
@@ -182,7 +184,12 @@ const U3QuestPage = () => {
 
   return (
     <MainView style={backgroundStyle}>
-      <Timer isRunning={true} startTime={time} />
+      {!completionIsFocused && (
+        <>
+          <Timer isRunning={true} startTime={time} />
+          <Spacer height={'25%'} />
+        </>
+      )}
 
       {time <= 0 ? (
         <>
@@ -192,20 +199,29 @@ const U3QuestPage = () => {
         <>
           {hintStatus == 'Inactive' && !confirm && (
             <>
-              {hintCooldown < Date.now() || hintCooldown == 0 ? (
-                <Button
-                  title={'Request Hint'}
-                  onClick={() => {
-                    console.log('request hint');
-                    console.log('hintCooldown', hintCooldown);
-                    console.log('Date.now()  ', Date.now());
-                    setConfirm(!confirm);
-                  }}
-                />
-              ) : (
-                <Text style={hintStyle}>
-                  Next hint available in {hintTimeLeftString}
-                </Text>
+              {!completionIsFocused && (
+                <>
+                  {hintCooldown < Date.now() || hintCooldown == 0 ? (
+                    <Button
+                      title={'Request Hint'}
+                      onClick={() => {
+                        console.log('request hint');
+                        console.log('hintCooldown', hintCooldown);
+                        console.log('Date.now()  ', Date.now());
+                        setConfirm(!confirm);
+                      }}
+                    />
+                  ) : (
+                    // <Text style={hintStyle}>
+                    //   Next hint available in {hintTimeLeftString}
+                    // </Text>
+                    <Button
+                      title={`Next Hint ${hintTimeLeftString}`}
+                      onClick={() => {}}
+                      backgroundColor="lightgray"
+                    />
+                  )}
+                </>
               )}
             </>
           )}
@@ -249,7 +265,7 @@ const U3QuestPage = () => {
 
           {completed ? (
             <View>
-              <Text style={waitingViewTextStyle}>
+              <Text style={hintStyle}>
                 Congratulations! Stay put – your host will meet with you in a
                 moment.
               </Text>
@@ -267,6 +283,12 @@ const U3QuestPage = () => {
                 <TextInput
                   style={textInputStyle}
                   autoCapitalize={'characters'}
+                  onFocus={() => {
+                    setCompletionIsFocused(true);
+                  }}
+                  onBlur={() => {
+                    setCompletionIsFocused(false);
+                  }}
                   onChangeText={text => {
                     setEnteredCode(text);
                     if (text.length == 0) {
@@ -280,7 +302,9 @@ const U3QuestPage = () => {
               </View>
               <Spacer height={'5%'} />
 
-              <Button title={'Submit Code'} onClick={handleCodeSubmition} />
+              {completionIsFocused && (
+                <Button title={'Submit Code'} onClick={handleCodeSubmition} />
+              )}
             </>
           )}
         </>

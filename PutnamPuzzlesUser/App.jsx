@@ -56,7 +56,7 @@ const App = () => {
   const [isUserIncluded, setIsUserIncluded] = useState(false);
 
   const [users, setUsers] = useState([]);
-  const [currentAppState, setCurrentAppState] = useState('Inacvitve');
+  const [currentAppState, setCurrentAppState] = useState('');
   const [code, setCode] = useState('');
   const [timerEndTime, setTimerEndTime] = useState(0);
   const [userCode, setUserCode] = useState('');
@@ -146,6 +146,23 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    if (currentAppState == 'Uninitiated') {
+      // reset all state
+      setUserId(-1);
+      setUserName('');
+      setIsUserIncluded(false);
+      setUsers([]);
+      setCode('');
+      setTimerEndTime(0);
+      setUserCode('');
+      setHintName('Error');
+      setHintCooldown(0);
+      setHintStatus('Inactive');
+      setUserIndex(-1);
+    }
+  }, [currentAppState]);
+
+  useEffect(() => {
     console.log('Current App State: ', currentAppState);
   }, [currentAppState]);
 
@@ -180,7 +197,7 @@ const App = () => {
             : backgroundStyle
         }>
         <StatusBar barStyle={'dark-content'} backgroundColor="#D2D2FF" />
-        {currentAppState == 'Inactive' &&
+        {(currentAppState == 'Inactive' || currentAppState == 'Set Timer') &&
           (userId >= 0 ? (
             <U2WaitingRoomPage selected={userIsSelected} />
           ) : (

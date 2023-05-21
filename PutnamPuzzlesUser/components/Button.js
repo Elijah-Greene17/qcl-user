@@ -1,6 +1,6 @@
 import {View, Text, Pressable} from 'react-native';
 
-const Button = ({title, onClick}) => {
+const Button = ({title, onClick, backgroundColor = '#76b368'}) => {
   const container = {
     display: 'flex',
     flexDirection: 'row',
@@ -21,7 +21,7 @@ const Button = ({title, onClick}) => {
     flexDirection: 'column',
     justifyContent: 'center',
 
-    backgroundColor: '#76b368',
+    backgroundColor: `${backgroundColor}`,
     height: '100%',
     width: '100%',
     borderRadius: 50,
