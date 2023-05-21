@@ -65,10 +65,29 @@ const U0HomePage = ({selected}) => {
     width: '60%',
     backgroundColor: '#fff',
   };
+  const waitingViewStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: '100%',
+  };
+
+  const waitingViewTextStyle = {
+    fontSize: 30,
+    textAlign: 'center',
+    width: '80%',
+  };
 
   return (
     // Header: 25%; Timer: 15%, Form: 35%, Button: 20%
-    <MainView style={backgroundStyle}></MainView>
+    <MainView style={backgroundStyle}>
+      <Spacer height={'15%'} />
+      <View style={waitingViewStyle}>
+        <Text style={waitingViewTextStyle}>
+          No quests are currently available
+        </Text>
+      </View>
+    </MainView>
   );
 };
 

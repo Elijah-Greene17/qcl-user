@@ -75,6 +75,7 @@ const U3QuestPage = () => {
     color: 'red',
     fontWeight: 'bold',
     marginBottom: '5%',
+    width: '80%',
   };
   const confirmStyle = {
     display: 'flex',
@@ -187,13 +188,23 @@ const U3QuestPage = () => {
       {!completionIsFocused && (
         <>
           <Timer isRunning={true} startTime={time} />
-          <Spacer height={'25%'} />
+          <Spacer height={'10%'} />
         </>
       )}
 
       {time <= 0 ? (
         <>
-          <Text style={hintStyle}>The Quest Duration Time has expired!</Text>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
+            }}>
+            <Text style={hintStyle}>
+              The Quest Duration Time has expired! Please Return to the starting
+              point to meet with your host
+            </Text>
+          </View>
         </>
       ) : (
         <>
@@ -229,14 +240,28 @@ const U3QuestPage = () => {
           {hintStatus == 'Active' && !confirm && (
             <>
               <Spacer height={'5%'} />
-              <Text style={hintStyle}>Hint Requested</Text>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                }}>
+                <Text style={hintStyle}>Hint Requested</Text>
+              </View>
             </>
           )}
 
           {confirm && (
             <View>
               <Spacer height={'5%'} />
-              <Text style={hintStyle}>Are you sure you want a hint?</Text>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                }}>
+                <Text style={hintStyle}>Are you sure you want a hint?</Text>
+              </View>
               <View style={confirmStyle}>
                 {/* <Pressable
                   onPress={() => {
@@ -264,7 +289,12 @@ const U3QuestPage = () => {
           )}
 
           {completed ? (
-            <View>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+              }}>
               <Text style={hintStyle}>
                 Congratulations! Stay put – your host will meet with you in a
                 moment.
@@ -273,9 +303,16 @@ const U3QuestPage = () => {
           ) : (
             <>
               {showErrorCode ? (
-                <Text style={hintStyle}>
-                  Sorry, the Completion Code is Incorrect
-                </Text>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                  }}>
+                  <Text style={hintStyle}>
+                    Sorry, the Completion Code is Incorrect
+                  </Text>
+                </View>
               ) : (
                 <Text style={labelStyle}>Enter Quest Completion Code</Text>
               )}

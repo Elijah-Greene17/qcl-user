@@ -14,11 +14,13 @@ const U2WaitingRoomPage = ({selected}) => {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+    width: '100%',
   };
 
   const waitingViewTextStyle = {
     fontSize: 30,
     textAlign: 'center',
+    width: '80%',
   };
 
   return (

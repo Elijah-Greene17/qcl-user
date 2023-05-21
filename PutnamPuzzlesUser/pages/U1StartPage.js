@@ -39,6 +39,7 @@ const U1StartPage = ({navigation}) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [number, setNumber] = useState('');
 
+  const fakeRef = useRef();
   const numRef = useRef();
 
   const {userId, setUserId, userName, setUserName, userIndex} =
@@ -58,70 +59,107 @@ const U1StartPage = ({navigation}) => {
     }
   };
 
+  const formatPhoneNumber = text => {
+    let cleaned = text.replace(/\D/g, ''); // remove all non-digits
+    let formatted = cleaned;
+    if (cleaned.length > 6) {
+      // format as "(XXX) XXX-XXXX" if we have enough digits
+      formatted = `(${cleaned.slice(0, 3)}) ${cleaned.slice(
+        3,
+        6,
+      )}-${cleaned.slice(6)}`;
+    } else if (cleaned.length > 3) {
+      // format as "(XXX) XXX" if we have up to 6 digits
+      formatted = `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
+    } else if (cleaned.length > 0) {
+      // format as "(XXX" if we have up to 3 digits
+      formatted = `(${cleaned}`;
+    }
+    setPhoneNumber(formatted);
+  };
+
   useEffect(() => {
     //Format Phone Number
-    let phoneText = '';
-    console.log(number);
-    switch (number.length) {
+    console.log('number: ' + number);
+    let editedNumber = '';
+    // set edited number to only numbers
+    for (let i = 0; i < number.length; i++) {
+      if (number[i] >= '0' && number[i] <= '9') {
+        editedNumber += number[i];
+      }
+    }
+    console.log('editedNumber: ' + editedNumber);
+
+    let phoneText = editedNumber;
+    switch (editedNumber.length) {
       case 1:
         // code block to be executed if expression === value1
-        phoneText = '(' + number + ')';
+        phoneText = '(' + editedNumber + ')';
         break;
       case 2:
         // code block to be executed if expression === value2
-        phoneText = '(' + number + ')';
+        phoneText = '(' + editedNumber + ')';
         break;
       // you can have any number of case statements
       case 3:
-        phoneText = '(' + number + ')';
+        phoneText = '(' + editedNumber + ')';
         break;
       case 4:
         phoneText =
-          '(' + number.substring(0, 3) + ') ' + number.substring(3, 4);
+          '(' +
+          editedNumber.substring(0, 3) +
+          ') ' +
+          editedNumber.substring(3, 4);
         break;
       case 5:
         phoneText =
-          '(' + number.substring(0, 3) + ') ' + number.substring(3, 5);
+          '(' +
+          editedNumber.substring(0, 3) +
+          ') ' +
+          editedNumber.substring(3, 5);
         break;
       case 6:
         phoneText =
-          '(' + number.substring(0, 3) + ') ' + number.substring(3, 6);
+          '(' +
+          editedNumber.substring(0, 3) +
+          ') ' +
+          editedNumber.substring(3, 6);
         break;
       case 7:
         phoneText =
           '(' +
-          number.substring(0, 3) +
+          editedNumber.substring(0, 3) +
           ') ' +
-          number.substring(3, 6) +
+          editedNumber.substring(3, 6) +
           '-' +
-          number.substring(6, 7);
+          editedNumber.substring(6, 7);
         break;
       case 8:
         phoneText =
           '(' +
-          number.substring(0, 3) +
+          editedNumber.substring(0, 3) +
           ') ' +
-          number.substring(3, 6) +
+          editedNumber.substring(3, 6) +
           '-' +
-          number.substring(6, 8);
+          editedNumber.substring(6, 8);
         break;
       case 9:
         phoneText =
           '(' +
-          number.substring(0, 3) +
+          editedNumber.substring(0, 3) +
           ') ' +
-          number.substring(3, 6) +
+          editedNumber.substring(3, 6) +
           '-' +
-          number.substring(6, 9);
+          editedNumber.substring(6, 9);
         break;
       case 10:
         phoneText =
           '(' +
-          number.substring(0, 3) +
+          editedNumber.substring(0, 3) +
           ') ' +
-          number.substring(3, 6) +
+          editedNumber.substring(3, 6) +
           '-' +
-          number.substring(6, 10);
+          editedNumber.substring(6, 10);
         break;
 
       default:
@@ -208,13 +246,17 @@ const U1StartPage = ({navigation}) => {
         <Spacer height="10%" />
         <Text style={labelStyle}>Phone Number</Text>
         <View style={textInputViewStyle}>
-          <TextInput
+          {/* <TextInput
             style={textInputStyle}
             keyboardType="number-pad"
             onFocus={() => {
               numRef.current.focus();
             }}
-            // onChangeText={handlePhoneNumberChange}
+            ref={fakeRef}
+            onChangeText={text => {
+              console.log(text);
+            }}
+            //onChangeText={handlePhoneNumberChange}
             value={phoneNumber}
           />
           <TextInput
@@ -226,6 +268,13 @@ const U1StartPage = ({navigation}) => {
             ref={numRef}
             maxLength={10}
             value={number}
+          /> */}
+          <TextInput
+            style={textInputStyle}
+            value={phoneNumber}
+            onChangeText={formatPhoneNumber}
+            keyboardType="number-pad"
+            maxLength={14}
           />
         </View>
       </View>
