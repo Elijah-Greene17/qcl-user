@@ -1,4 +1,4 @@
-package com.putnampuzzleuser;
+package com.quietcornerquests.userapp;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
