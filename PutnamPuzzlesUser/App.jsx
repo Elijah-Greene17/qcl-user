@@ -45,6 +45,7 @@ import U3QuestPage from './pages/U3QuestPage';
 import U4QuestInProgressPage from './pages/U4QuestInProgessPage';
 
 import {PermissionsAndroid} from 'react-native';
+import U5ReviewPage from './pages/U5ReviewPage';
 
 const app = initializeApp(firebaseConfig);
 
@@ -55,6 +56,7 @@ const App = () => {
   const [userName, setUserName] = useState('');
   const [isUserIncluded, setIsUserIncluded] = useState(false);
 
+  const [questNo, setQuestNo] = useState(0);
   const [users, setUsers] = useState([]);
   const [currentAppState, setCurrentAppState] = useState('');
   const [code, setCode] = useState('');
@@ -134,6 +136,7 @@ const App = () => {
       } else {
         setUsers([]);
       }
+      setQuestNo(data.questId);
       setCurrentAppState(data.currentState);
       setHintCooldown(data.hint.cooldown);
       setTimerEndTime(data.timer.endTime);
@@ -169,6 +172,8 @@ const App = () => {
   return (
     <AppContext.Provider
       value={{
+        questNo,
+        setQuestNo,
         userId,
         setUserId,
         userName,
@@ -206,7 +211,7 @@ const App = () => {
         {currentAppState == 'Uninitiated' && <U0HomePage />}
         {currentAppState == 'Active In Progress' &&
           (isUserIncluded ? <U3QuestPage /> : <U4QuestInProgressPage />)}
-        {/* {currentAppState == 'Active In Progress' && <U3QuestPage />} */}
+        {/* <U5ReviewPage /> */}
       </SafeAreaView>
     </AppContext.Provider>
   );
@@ -232,9 +237,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-/**
- * Connect with Github
- * Connect to Database
- * Clean Up U1
- */
