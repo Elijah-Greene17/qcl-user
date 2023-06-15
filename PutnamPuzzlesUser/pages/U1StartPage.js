@@ -42,7 +42,7 @@ const U1StartPage = ({navigation}) => {
   const fakeRef = useRef();
   const numRef = useRef();
 
-  const {userId, setUserId, userName, setUserName, userIndex} =
+  const {userId, setUserId, userName, setPhone, setUserName, userIndex} =
     useContext(AppContext);
 
   const onStartup = async () => {
@@ -56,6 +56,7 @@ const U1StartPage = ({navigation}) => {
     if (localPhone) {
       console.log('local phone exists: ' + localPhone);
       setPhoneNumber(localPhone);
+      setPhone(localPhone);
     }
   };
 
@@ -76,6 +77,7 @@ const U1StartPage = ({navigation}) => {
       formatted = `(${cleaned}`;
     }
     setPhoneNumber(formatted);
+    setPhone(formatted);
   };
 
   useEffect(() => {
@@ -168,6 +170,7 @@ const U1StartPage = ({navigation}) => {
     }
 
     setPhoneNumber(phoneText);
+    setPhone(phoneText);
   }, [number]);
 
   const handleNameChange = text => {
@@ -175,6 +178,7 @@ const U1StartPage = ({navigation}) => {
   };
   const handlePhoneNumberChange = num => {
     setPhoneNumber(num);
+    setPhone(num);
   };
 
   const submitPlayerInfo = () => {

@@ -29,6 +29,8 @@ const U3QuestPage = () => {
     userCode,
     setUserCode,
     userName,
+    setUserName,
+    phone,
     hintStatus,
     hintCooldown,
   } = useContext(AppContext);
@@ -155,6 +157,26 @@ const U3QuestPage = () => {
         clearInterval(timer);
       }
     }, 1000);
+
+    if (completed) {
+      console.log('Completed!');
+      fetch('http://192.168.1.2:3000/api/notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `The Team has completed the Quest!`,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
     return () => clearInterval(timer);
   }, [timerEndTime, completed]);
 
@@ -182,6 +204,27 @@ const U3QuestPage = () => {
       }, 7000);
     }
   }, [showErrorCode]);
+
+  useEffect(() => {
+    if (time <= 0) {
+      fetch('http://192.168.1.2:3000/api/notification', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `The Time has expired for the Quest!`,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  }, [time]);
 
   return (
     <MainView style={backgroundStyle}>
@@ -216,9 +259,6 @@ const U3QuestPage = () => {
                     <Button
                       title={'Request Hint'}
                       onClick={() => {
-                        console.log('request hint');
-                        console.log('hintCooldown', hintCooldown);
-                        console.log('Date.now()  ', Date.now());
                         setConfirm(!confirm);
                       }}
                     />
@@ -273,6 +313,25 @@ const U3QuestPage = () => {
                 <SubButton
                   title={'Yes'}
                   onClick={() => {
+                    console.log('EG: ', userName);
+                    console.log('EG: ', phone);
+                    const numbersOnlyPhoneNumber = phone.replace(/\D/g, '');
+                    fetch('http://192.168.1.2:3000/api/notification', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        message: `${userName} has requested a hint! +1${numbersOnlyPhoneNumber}`,
+                      }),
+                    })
+                      .then(response => response.json())
+                      .then(data => {
+                        console.log('Success:', data);
+                      })
+                      .catch(error => {
+                        console.error('Error:', error);
+                      });
                     handleHint();
                     setConfirm(false);
                   }}

@@ -55,6 +55,7 @@ const App = () => {
   const [userId, setUserId] = useState(-1);
   const [userName, setUserName] = useState('');
   const [isUserIncluded, setIsUserIncluded] = useState(false);
+  const [phone, setPhone] = useState('');
 
   const [questNo, setQuestNo] = useState(0);
   const [users, setUsers] = useState([]);
@@ -178,6 +179,8 @@ const App = () => {
         setUserId,
         userName,
         setUserName,
+        phone,
+        setPhone,
         currentAppState,
         setCurrentAppState,
         timerEndTime,
