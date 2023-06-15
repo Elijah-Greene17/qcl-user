@@ -64,7 +64,7 @@ const U5ReviewPage = ({navigation}) => {
             onClick={() => {
               console.log('Submit');
               setReviewSubmitted(true);
-              fetch('http://localhost:3000/api/addReview', {
+              fetch('https://qcq-dd80551a4b64.herokuapp.com/api/addReview', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

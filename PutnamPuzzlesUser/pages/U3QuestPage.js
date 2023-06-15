@@ -160,7 +160,7 @@ const U3QuestPage = () => {
 
     if (completed) {
       console.log('Completed!');
-      fetch('http://192.168.1.2:3000/api/notification', {
+      fetch('https://qcq-dd80551a4b64.herokuapp.com/api/notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ const U3QuestPage = () => {
 
   useEffect(() => {
     if (time <= 0) {
-      fetch('http://192.168.1.2:3000/api/notification', {
+      fetch('https://qcq-dd80551a4b64.herokuapp.com/api/notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -316,15 +316,18 @@ const U3QuestPage = () => {
                     console.log('EG: ', userName);
                     console.log('EG: ', phone);
                     const numbersOnlyPhoneNumber = phone.replace(/\D/g, '');
-                    fetch('http://192.168.1.2:3000/api/notification', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
+                    fetch(
+                      'https://qcq-dd80551a4b64.herokuapp.com/api/notification',
+                      {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          message: `${userName} has requested a hint! +1${numbersOnlyPhoneNumber}`,
+                        }),
                       },
-                      body: JSON.stringify({
-                        message: `${userName} has requested a hint! +1${numbersOnlyPhoneNumber}`,
-                      }),
-                    })
+                    )
                       .then(response => response.json())
                       .then(data => {
                         console.log('Success:', data);
