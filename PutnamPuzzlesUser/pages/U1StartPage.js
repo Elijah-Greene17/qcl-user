@@ -245,6 +245,7 @@ const U1StartPage = ({navigation}) => {
             style={textInputStyle}
             onChangeText={handleNameChange}
             value={name}
+            maxLength={15}
           />
         </View>
         <Spacer height="10%" />

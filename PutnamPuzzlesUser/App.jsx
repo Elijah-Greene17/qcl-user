@@ -205,7 +205,7 @@ const App = () => {
             : backgroundStyle
         }>
         <StatusBar barStyle={'dark-content'} backgroundColor="#D2D2FF" />
-        {/* {(currentAppState == 'Inactive' || currentAppState == 'Set Timer') &&
+        {(currentAppState == 'Inactive' || currentAppState == 'Set Timer') &&
           (userId >= 0 ? (
             <U2WaitingRoomPage selected={userIsSelected} />
           ) : (
@@ -213,8 +213,8 @@ const App = () => {
           ))}
         {currentAppState == 'Uninitiated' && <U0HomePage />}
         {currentAppState == 'Active In Progress' &&
-          (isUserIncluded ? <U3QuestPage /> : <U4QuestInProgressPage />)} */}
-        <U5ReviewPage />
+          (isUserIncluded ? <U3QuestPage /> : <U4QuestInProgressPage />)}
+        {currentAppState == 'Review' && userId >= 0 && <U5ReviewPage />}
       </SafeAreaView>
     </AppContext.Provider>
   );

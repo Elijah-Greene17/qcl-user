@@ -154,6 +154,24 @@ const U3QuestPage = () => {
         timeRemaining = timerEndTime - Date.now();
         setTime(timeRemaining);
       } else {
+        // if (time <= 0) {
+        //   fetch('https://qcq-dd80551a4b64.herokuapp.com/api/notification', {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //       message: `The Time has expired for the Quest!`,
+        //     }),
+        //   })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //       console.log('Success:', data);
+        //     })
+        //     .catch(error => {
+        //       console.error('Error:', error);
+        //     });
+        // }
         clearInterval(timer);
       }
     }, 1000);
@@ -206,24 +224,24 @@ const U3QuestPage = () => {
   }, [showErrorCode]);
 
   useEffect(() => {
-    if (time <= 0) {
-      fetch('https://qcq-dd80551a4b64.herokuapp.com/api/notification', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: `The Time has expired for the Quest!`,
-        }),
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    }
+    // if (time <= 0) {
+    //   fetch('https://qcq-dd80551a4b64.herokuapp.com/api/notification', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       message: `The Time has expired for the Quest!`,
+    //     }),
+    //   })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       console.log('Success:', data);
+    //     })
+    //     .catch(error => {
+    //       console.error('Error:', error);
+    //     });
+    // }
   }, [time]);
 
   return (
@@ -248,6 +266,15 @@ const U3QuestPage = () => {
               point to meet with your host
             </Text>
           </View>
+          <Spacer height={'10%'} />
+          <Button
+            title={'Leave a Review'}
+            onClick={() => {
+              const app = initializeApp(firebaseConfig);
+              const db = getDatabase(app);
+              set(ref(db, 'app/currentState'), 'Review');
+            }}
+          />
         </>
       ) : (
         <>
@@ -351,17 +378,28 @@ const U3QuestPage = () => {
           )}
 
           {completed ? (
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-              }}>
-              <Text style={hintStyle}>
-                Congratulations! Stay put – your host will meet with you in a
-                moment.
-              </Text>
-            </View>
+            <>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                }}>
+                <Text style={hintStyle}>
+                  Congratulations! Stay put – your host will meet with you in a
+                  moment.
+                </Text>
+              </View>
+              <Spacer height={'40%'} />
+              <Button
+                title={'Leave a Review'}
+                onClick={() => {
+                  const app = initializeApp(firebaseConfig);
+                  const db = getDatabase(app);
+                  set(ref(db, 'app/currentState'), 'Review');
+                }}
+              />
+            </>
           ) : (
             <>
               {showErrorCode ? (
